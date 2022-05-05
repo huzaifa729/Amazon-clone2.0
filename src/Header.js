@@ -4,9 +4,33 @@ import SearchIcon from '@mui/icons-material/Search';
 import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import { Link } from 'react-router-dom';
+//  import CartItems from './CartItems';
 
 
-function Header() {
+function Header({ cartItems }) {
+
+    //  const getCountnd = () => {
+    //      let count = 0;
+    //      // Loop through all cart items
+    //      CartItems.forEach((item) => {
+    //          // add the quantity of the cart item to tota;
+    //          count += item.product.quantity;
+    //      })
+
+    //      return count;
+    //  }
+
+    const getCount = () => {
+        let count = 0;
+        // Loop through all cart items
+        cartItems.forEach((item) => {
+            // add the quantity of the cart item to tota;
+            count += item.product.quantity;
+        })
+      
+        return count;
+      }
+
 return (
         <Container>
             <HeaderLogo>
@@ -47,7 +71,7 @@ return (
                 <HeaderOptionCart>
                 <Link to="/cart">
                      <ShoppingBasketIcon />
-                        <CartCount>4</CartCount>
+                        <CartCount> {getCount()} </CartCount>
                         </Link>
                     </HeaderOptionCart>
                 

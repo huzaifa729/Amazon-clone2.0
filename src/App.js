@@ -3,6 +3,7 @@ import './App.css';
 import Cart from './Cart';
 import Header from './Header';
 import Home from './Home';
+
 import {
   BrowserRouter,
   Routes,
@@ -37,7 +38,7 @@ function App() {
    
       <div className="App">
          <BrowserRouter>
-          <Header/>
+          <Header cartItems={cartItems} />
         <Routes>
         <Route path="/cart" element={<Cart cartItems={cartItems} />} />
 

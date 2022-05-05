@@ -5,17 +5,22 @@ import { db } from './firebase'
 
 const CartItem = ({ id, item }) => {
 
+    const deleteItem = (e) => {
+        e.preventDefault()
+        db.collection('cartItems').doc(id).delete();
+    }
+
     let options = []
 
     for (let i = 1; i < Math.max(item.quantity + 1, 20); i++) {
         options.push(<option value={i}> Qty: {i}</option>)
     }
 
-    //  const changeQuantity = (newQuantity) => {
-    //      db.collection('cartItems').doc(id).update({
-    //          quantity: parseInt(newQuantity)
-    //      })
-    //  }
+  const changeQuantity = (newQuantity) => {
+         db.collection('cartItems').doc(id).update({
+             quantity: parseInt(newQuantity)
+          })
+      }
 
   return (
     <Container>
@@ -31,12 +36,12 @@ const CartItem = ({ id, item }) => {
                     <CartItemQuantityContainer>
                     <select
                             value={item.quantity}
-                            //  onChange={(e) => changeQuantity(e.target.value)}
+                          onChange={(e) => changeQuantity(e.target.value)}
                         >
                             {options}
                         </select>
                     </CartItemQuantityContainer>
-                    <CartItemDeleteContainer>
+                    <CartItemDeleteContainer    onClick={deleteItem}>
                         Delete
                     </CartItemDeleteContainer>
                 </CartItemInfoBottom>
