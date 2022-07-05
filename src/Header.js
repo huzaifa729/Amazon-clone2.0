@@ -137,6 +137,7 @@ const HeaderSearchInput = styled.input`
 
 const HeaderSearchIconContainer = styled.div`
     background-color: #febd69;
+  
     width: 45px;
     color: black;
     display: flex;
